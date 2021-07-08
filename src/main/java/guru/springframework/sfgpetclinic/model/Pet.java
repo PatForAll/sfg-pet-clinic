@@ -7,6 +7,7 @@ public class Pet {
     private PetType petType;
     private Owner owner;
     private LocalDate birthDate;
+    private String noise;
 
     public PetType getPetType() {
         return petType;
@@ -31,4 +32,13 @@ public class Pet {
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
+    
+    public String getNoise() {
+        return noise;
+    }
+    
+    public void setNoise(String noise) {
+        this.noise = noise
+    }
+
 }
