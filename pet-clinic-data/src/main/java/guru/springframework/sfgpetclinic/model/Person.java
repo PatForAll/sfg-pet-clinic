@@ -2,6 +2,8 @@ package guru.springframework.sfgpetclinic.model;
 
 public class Person {
 
+    long id;
+
     private String firstName;
     private String lastName;
 
