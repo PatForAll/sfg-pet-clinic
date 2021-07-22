@@ -11,6 +11,8 @@ import guru.springframework.sfgpetclinic.services.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+
 @Component
 public class DataLoader implements CommandLineRunner {
 
@@ -44,16 +46,36 @@ public class DataLoader implements CommandLineRunner {
         Owner owner1 = new Owner();
         owner1.setFirstName("Michael");
         owner1.setLastName("Weston");
+        owner1.setAddress("123 Brickerstreet");
+        owner1.setCity("Miami");
+        owner1.setTelephone("123456789");
 
-        Owner savedOwner1 = ownerService.save(owner1);
+        Pet pet1 = new Pet();
+        pet1.setPetType(savedPetType1);
+        pet1.setOwner(owner1);
+        pet1.setBirthDate(LocalDate.now());
+        pet1.setName("Doggo");
+        owner1.getPets().add(pet1);
+
+        ownerService.save(owner1);
 
         Owner owner2 = new Owner();
         owner2.setFirstName("Fiona");
         owner2.setLastName("Johnson");
+        owner1.setAddress("123 Brickerstreet");
+        owner1.setCity("Miami");
+        owner1.setTelephone("987654321");
 
-        Owner savedOwner2 = ownerService.save(owner2);
+        Pet pet2 = new Pet();
+        pet2.setPetType(savedPetType2);
+        pet2.setOwner(owner2);
+        pet2.setBirthDate(LocalDate.now());
+        pet2.setName("Kitty");
+        owner2.getPets().add(pet2);
 
-        System.out.println("Loaded Owners...");
+        ownerService.save(owner2);
+
+        System.out.println("Loaded Owners & Pets...");
 
         Vet vet1 = new Vet();
         vet1.setFirstName("Sam");
@@ -69,16 +91,5 @@ public class DataLoader implements CommandLineRunner {
 
         System.out.println("Loaded Vets...");
 
-        Pet pet1 = new Pet();
-        pet1.setOwner(savedOwner1);
-        pet1.setPetType(savedPetType1);
-
-        petService.save(pet1);
-
-        Pet pet2 = new Pet();
-        pet1.setOwner(savedOwner2);
-        pet1.setPetType(savedPetType2);
-
-        petService.save(pet2);
     }
 }
