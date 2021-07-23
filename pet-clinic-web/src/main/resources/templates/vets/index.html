@@ -6,6 +6,7 @@
 </head>
 <body>
 <!--/*@thymesVar id="vet" type="guru.springframework.sfgpetclinic.model.Vet"*/-->
+<!--/*@thymesVar id="speciality" type="guru.springframework.sfgpetclinic.model.Speciality"*/-->
 <h2 th:text="'List of Vets'">List of Vets..</h2>
 
 <table class="table table-striped">
@@ -13,12 +14,16 @@
     <th>Id</th>
     <th>First Name</th>
     <th>Last Name</th>
+    <th>Specialities</th>
     </thead>
     <tbody>
     <tr th:each="vet : ${vets}">
         <td th:text="${vet.id}">1</td>
         <td th:text="${vet.firstName}">Jane</td>
         <td th:text="${vet.lastName}">Doe</td>
+        <<tr th:each="speciality : ${vet.specialties}">
+            <td th:text="${speciality.description}">Expert</td>
+        </tr>
     </tr>
     </tbody>
 </table>

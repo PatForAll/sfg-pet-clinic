@@ -1,9 +1,6 @@
 package guru.springframework.sfgpetclinic.bootstrap;
 
-import guru.springframework.sfgpetclinic.model.Owner;
-import guru.springframework.sfgpetclinic.model.Pet;
-import guru.springframework.sfgpetclinic.model.PetType;
-import guru.springframework.sfgpetclinic.model.Vet;
+import guru.springframework.sfgpetclinic.model.*;
 import guru.springframework.sfgpetclinic.services.OwnerService;
 import guru.springframework.sfgpetclinic.services.PetService;
 import guru.springframework.sfgpetclinic.services.PetTypeService;
@@ -31,6 +28,12 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        int count = petTypeService.findAll().size();
+
+        if(count == 0) loadData();
+    }
+
+    private void loadData() {
         PetType petType1 = new PetType();
         petType1.setName("Dog");
 
@@ -77,19 +80,26 @@ public class DataLoader implements CommandLineRunner {
 
         System.out.println("Loaded Owners & Pets...");
 
+        Speciality speciality1 = new Speciality();
+        speciality1.setDescription("Dog Expert");
+
         Vet vet1 = new Vet();
         vet1.setFirstName("Sam");
         vet1.setLastName("Axe");
+        vet1.getSpecialties().add(speciality1);
 
         vetService.save(vet1);
+
+        Speciality speciality2 = new Speciality();
+        speciality2.setDescription("Cat Expert");
 
         Vet vet2 = new Vet();
         vet2.setFirstName("Anna");
         vet2.setLastName("Harte");
+        vet2.getSpecialties().add(speciality2);
 
         vetService.save(vet2);
 
-        System.out.println("Loaded Vets...");
-
+        System.out.println("Loaded Vets & Specialities...");
     }
 }
