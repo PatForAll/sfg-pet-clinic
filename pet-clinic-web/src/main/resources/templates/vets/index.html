@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'vets')}">
+<html lang="en" th:replace="~{fragments/layout :: layout (~{::body},'vets')}" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Vet Index Page</title>
@@ -21,9 +21,10 @@
         <td th:text="${vet.id}">1</td>
         <td th:text="${vet.firstName}">Jane</td>
         <td th:text="${vet.lastName}">Doe</td>
-        <<tr th:each="speciality : ${vet.specialties}">
-            <td th:text="${speciality.description}">Expert</td>
-        </tr>
+        <
+    <tr th:each="speciality : ${vet.specialities}">
+        <td th:text="${speciality.description}">Expert</td>
+    </tr>
     </tr>
     </tbody>
 </table>

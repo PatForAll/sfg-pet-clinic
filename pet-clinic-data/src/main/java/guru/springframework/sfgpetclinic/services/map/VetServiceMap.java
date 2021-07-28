@@ -33,9 +33,9 @@ public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetS
         // --> could be saved each by each, although now unsaved specialities are now saved
         // for reference, compare with OwnerServiceMap
         if (object != null) {
-            if (object.getSpecialties() != null) {
-                object.getSpecialties().forEach(speciality -> {
-                    if(speciality.getId() == null) {
+            if (object.getSpecialities() != null) {
+                object.getSpecialities().forEach(speciality -> {
+                    if (speciality.getId() == null) {
                         Speciality savedSpeciality = specialityService.save(speciality);
                         speciality.setId(savedSpeciality.getId());
                     }
