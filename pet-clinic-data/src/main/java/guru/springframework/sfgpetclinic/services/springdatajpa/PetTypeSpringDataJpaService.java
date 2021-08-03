@@ -23,7 +23,7 @@ public class PetTypeSpringDataJpaService implements PetTypeService {
     public Set<PetType> findAll() {
         Set<PetType> pets = new HashSet<>();
         petTypeRepository.findAll().forEach(pets::add);
-        return null;
+        return pets;
     }
 
     @Override
