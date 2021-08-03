@@ -1,4 +1,4 @@
-package guru.springframework.sfgpetclinic.model;
+package guru.springframework.sfgpetclinic.models;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

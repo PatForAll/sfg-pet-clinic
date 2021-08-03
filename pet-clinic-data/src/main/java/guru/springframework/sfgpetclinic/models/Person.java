@@ -1,4 +1,4 @@
-package guru.springframework.sfgpetclinic.model;
+package guru.springframework.sfgpetclinic.models;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
