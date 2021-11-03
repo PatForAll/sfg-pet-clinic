@@ -28,7 +28,7 @@ public class DataLoader implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
 
         log.debug("Starting DataLoader!");
 
@@ -44,7 +44,7 @@ public class DataLoader implements CommandLineRunner {
         PetType savedPetType1 = petTypeService.save(petType1);
 
         PetType petType2 = new PetType();
-        petType1.setName("Cat");
+        petType2.setName("Cat");
 
         PetType savedPetType2 = petTypeService.save(petType2);
 
@@ -82,6 +82,22 @@ public class DataLoader implements CommandLineRunner {
 
         ownerService.save(owner2);
 
+        Owner owner3 = new Owner();
+        owner3.setFirstName("Patrick");
+        owner3.setLastName("Weston");
+        owner3.setAddress("123 Germanstreet");
+        owner3.setCity("Hamburg");
+        owner3.setTelephone("123456789");
+
+        Pet pet3 = new Pet();
+        pet3.setPetType(savedPetType2);
+        pet3.setOwner(owner3);
+        pet3.setBirthDate(LocalDate.now());
+        pet3.setName("Joshi");
+        owner3.getPets().add(pet3);
+
+        ownerService.save(owner3);
+
         System.out.println("Loaded Owners & Pets...");
 
         Visit visit1 = new Visit();
@@ -97,6 +113,13 @@ public class DataLoader implements CommandLineRunner {
         visit2.setDescription("Castration");
 
         visitService.save(visit2);
+
+        Visit visit3 = new Visit();
+        visit3.setPet(pet3);
+        visit3.setDate(LocalDate.now());
+        visit3.setDescription("Ripped claw");
+
+        visitService.save(visit3);
 
         System.out.println("Loaded Visits...");
 
